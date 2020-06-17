@@ -58,12 +58,10 @@ class Subscription extends MoipResource {
             }
         }
         $this->data->customer = $this->data->customer->populate();
-        
-        var_dump($this->data);
 
         $response = $this->send("/assinaturas/v1/subscriptions?new_customer=false", "POST");
         
-        if (isset($response["errors"])) {
+        if (@($response["errors"])) {
             throw new \Exception(json_encode($response["errors"]));
         }
         
