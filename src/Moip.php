@@ -4,6 +4,7 @@ namespace Moip;
 use Moip\Resource\Plan;
 use Moip\Resource\Customer;
 use Moip\Resource\Subscription;
+use Moip\Resource\Invoice;
 use Scrap\Scrap;
 
 class Moip {
@@ -55,6 +56,10 @@ class Moip {
     
     public function subscription() {
         return new Subscription($this);
+    }
+    
+    public function invoice() {
+        return new Invoice($this);
     }
 
     public function getEndpoint() {
