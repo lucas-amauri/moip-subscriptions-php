@@ -4,6 +4,10 @@ namespace Moip\Resource;
 use stdClass;
 
 class Invoice extends MoipResource {
+    protected function initialize() {
+        $this->data = new stdClass();
+    }
+    
     /**
      * Get a invoice
      * @param string $code Invoice id
