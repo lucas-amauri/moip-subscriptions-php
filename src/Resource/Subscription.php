@@ -68,6 +68,10 @@ class Subscription extends MoipResource {
         return $response;
     }    
     
+    public function get($code) {
+        return $this->send("/assinaturas/v1/subscriptions/" . $code);
+    }
+    
     public function getList() {
         return $this->send('/assinaturas/v1/subscriptions', "GET");
     }
