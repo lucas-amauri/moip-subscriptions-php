@@ -1,7 +1,7 @@
 <?php
-namespace Moip\Resource;
+namespace MoipSubscription\Resource;
 
-use Moip\Moip;
+use MoipSubscription\MoipSubscription;
 use Scrap\Scrap;
 use stdClass;
 use JsonSerializable;
@@ -22,7 +22,7 @@ abstract class MoipResource extends Scrap  implements JsonSerializable {
      *
      * @param \Moip\Moip $moip
      */
-    public function __construct(Moip $moip)
+    public function __construct(MoipSubscription $moip)
     {
         $this->moip = $moip;
         $this->data = new stdClass();

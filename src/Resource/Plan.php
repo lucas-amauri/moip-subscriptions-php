@@ -1,5 +1,5 @@
 <?php
-namespace Moip\Resource;
+namespace MoipSubscription\Resource;
 
 use stdClass;
 

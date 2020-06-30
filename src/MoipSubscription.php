@@ -1,13 +1,13 @@
 <?php
-namespace Moip;
+namespace MoipSubscription;
 
-use Moip\Resource\Plan;
-use Moip\Resource\Customer;
-use Moip\Resource\Subscription;
-use Moip\Resource\Invoice;
+use MoipSubscription\Resource\Plan;
+use MoipSubscription\Resource\Customer;
+use MoipSubscription\Resource\Subscription;
+use MoipSubscription\Resource\Invoice;
 use Scrap\Scrap;
 
-class Moip {
+class MoipSubscription {
     /**
      * endpoint of production.
      *

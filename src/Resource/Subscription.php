@@ -1,7 +1,7 @@
 <?php
-namespace Moip\Resource;
+namespace MoipSubscription\Resource;
 
-use Moip\Resource\Customer;
+use MoipSubscription\Resource\Customer;
 use stdClass;
 
 class Subscription extends MoipResource {
