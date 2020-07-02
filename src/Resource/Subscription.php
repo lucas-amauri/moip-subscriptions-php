@@ -58,6 +58,10 @@ class Subscription extends MoipResource {
             }
         }
         $this->data->customer = $this->data->customer->populate();
+        
+        if (!$this->data->customer->billing_info->credit_card->number) {
+            unset($this->data->customer->billing_info);
+        }
 
         $response = $this->send("/assinaturas/v1/subscriptions?new_customer=false", "POST");
         

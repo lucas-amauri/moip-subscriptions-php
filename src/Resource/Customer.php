@@ -173,7 +173,14 @@ class Customer extends MoipResource {
     }
 
     public function create() {
-        $new_vault = "true";
+        $new_vault = "false";
+        if ($this->data->billing_info->credit_card->number) {
+            $new_vault = "true";
+        }
+        else {
+            unset($this->data->billing_info);
+        }
+        
         return $this->send("/assinaturas/v1/customers?new_vault=" . $new_vault, "POST");
     }
     
