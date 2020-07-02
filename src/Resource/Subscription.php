@@ -83,6 +83,7 @@ class Subscription extends MoipResource {
     }
     
     public function suspend($code) {
+        $this->data = null;
         $response = $this->send("/assinaturas/v1/subscriptions/" . $code . "/suspend", "PUT");
         
         if (@($response["errors"])) {
@@ -93,6 +94,7 @@ class Subscription extends MoipResource {
     }
     
     public function activate($code) {
+        $this->data = null;
         $response = $this->send("/assinaturas/v1/subscriptions/" . $code . "/activate", "PUT");
         
         if (@($response["errors"])) {
@@ -103,6 +105,7 @@ class Subscription extends MoipResource {
     }
     
     public function change_payment_method($code) {
+        $this->data = null;
         $response = $this->send("/assinaturas/v1/subscriptions/" . $code . "/change_payment_method", "PUT");
         
         if (@($response["errors"])) {
@@ -113,6 +116,7 @@ class Subscription extends MoipResource {
     }
     
     public function cancel($code) {
+        $this->data = null;
         $response = $this->send("/assinaturas/v1/subscriptions/" . $code . "/cancel", "PUT");
         
         if (@($response["errors"])) {
