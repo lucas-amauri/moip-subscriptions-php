@@ -70,7 +70,57 @@ class Subscription extends MoipResource {
         }
         
         return $response;
-    }    
+    }
+    
+    public function update($code) {
+        $response = $this->send("/assinaturas/v1/subscriptions/" . $code, "PUT");
+        
+        if (@($response["errors"])) {
+            throw new \Exception(json_encode($response["errors"]));
+        }
+        
+        return $response;
+    }
+    
+    public function suspend($code) {
+        $response = $this->send("/assinaturas/v1/subscriptions/" . $code . "/suspend", "PUT");
+        
+        if (@($response["errors"])) {
+            throw new \Exception(json_encode($response["errors"]));
+        }
+        
+        return $response;
+    }
+    
+    public function activate($code) {
+        $response = $this->send("/assinaturas/v1/subscriptions/" . $code . "/activate", "PUT");
+        
+        if (@($response["errors"])) {
+            throw new \Exception(json_encode($response["errors"]));
+        }
+        
+        return $response;
+    }
+    
+    public function change_payment_method($code) {
+        $response = $this->send("/assinaturas/v1/subscriptions/" . $code . "/change_payment_method", "PUT");
+        
+        if (@($response["errors"])) {
+            throw new \Exception(json_encode($response["errors"]));
+        }
+        
+        return $response;
+    }
+    
+    public function cancel($code) {
+        $response = $this->send("/assinaturas/v1/subscriptions/" . $code . "/cancel", "PUT");
+        
+        if (@($response["errors"])) {
+            throw new \Exception(json_encode($response["errors"]));
+        }
+        
+        return $response;
+    }
     
     public function get($code) {
         return $this->send("/assinaturas/v1/subscriptions/" . $code);
