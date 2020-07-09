@@ -73,6 +73,10 @@ class Subscription extends MoipResource {
     }
     
     public function update($code) {
+        unset($this->data->code);
+        unset($this->data->customer);
+        unset($this->data->payment_method);       
+        
         $response = $this->send("/assinaturas/v1/subscriptions/" . $code, "PUT");
         
         if (@($response["errors"])) {
@@ -105,6 +109,10 @@ class Subscription extends MoipResource {
     }
     
     public function change_payment_method($code) {
+        unset($this->data->code);
+        unset($this->data->customer);
+        unset($this->data->plan);       
+        
         $response = $this->send("/assinaturas/v1/subscriptions/" . $code . "/change_payment_method", "PUT");
         
         if (@($response["errors"])) {
