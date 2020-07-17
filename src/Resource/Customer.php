@@ -4,6 +4,9 @@ namespace MoipSubscription\Resource;
 use stdClass;
 
 class Customer extends MoipResource {
+    /**
+     * Initialize this object
+     */
     protected function initialize() {
         $this->data = new stdClass();
         $this->data->code = null;
@@ -172,6 +175,10 @@ class Customer extends MoipResource {
         return $this->data;
     }
 
+    /**
+     * 
+     * @return array
+     */
     public function create() {
         $new_vault = "false";
         if ($this->data->billing_info->credit_card->number) {
@@ -182,6 +189,38 @@ class Customer extends MoipResource {
         }
         
         return $this->send("/assinaturas/v1/customers?new_vault=" . $new_vault, "POST");
+    }
+    
+    /**
+     * Update Credit Card
+     * @param string $code
+     * @return array
+     * @throws \Exception
+     */
+    public function billing_infos($code) {
+        unset($this->data->code);
+        unset($this->data->fullname);
+        unset($this->data->email);
+        unset($this->data->phone_area_code);
+        unset($this->data->phone_number);
+        unset($this->data->birthdate_day);
+        unset($this->data->birthdate_month);
+        unset($this->data->birthdate_year);
+        unset($this->data->cpf);
+        unset($this->data->address);
+        
+        $credit_card = $this->data->billing_info->credit_card;
+        unset($this->data->billing_info);
+        
+        $this->data->credit_card = $credit_card;
+        
+        $response = $this->send("/assinaturas/v1/customers/" . $code . "/billing_infos", "PUT");
+        
+        if (@($response["errors"])) {
+            throw new \Exception(json_encode($response["errors"]));
+        }
+        
+        return $response;
     }
     
     /**
